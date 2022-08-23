@@ -22,3 +22,8 @@
 .post_body {
   overflow-wrap: anywhere;
 }
+
+.post_buttons {
+  display: flex;
+  justify-content: space-evenly;
+}
