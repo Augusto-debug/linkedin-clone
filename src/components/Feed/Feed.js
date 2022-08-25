@@ -16,6 +16,7 @@ function Feed() {
   const [posts, setPosts] = useState([]);
   const [input, setInput] = useState("");
 
+  // Cria um listener para monitorar possíveis mudanças feitas dentro do firebase.
   useEffect(() => {
     db.collection("posts")
       .orderBy("timestamp", "desc")
@@ -33,7 +34,7 @@ function Feed() {
     e.preventDefault();
 
     db.collection("posts").add({
-      name: "Augusto Cesar",
+      name: "Augusto Cesar Rezende",
       description: "this is a test",
       message: input,
       photoUrl: "",
