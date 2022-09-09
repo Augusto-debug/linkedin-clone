@@ -1,10 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import { auth } from "../firebase";
 import "./Login.css";
 
 function Login() {
-  const register = () => {};
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [profilePic, setProfilePic] = useState("");
 
-  const loginToApp = () => {};
+  const register = () => {
+    if (!name) {
+      alert("Please enter a full name");
+    }
+
+    auth.createUserWithEmailAndPassword(email, password).then((userAuth) => {
+      userAuth.user.updateProfile({
+        displayName: name,
+        photoURL: profilePic,
+      });
+    });
+    setName("");
+  };
+
+  const loginToApp = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="login">
@@ -14,10 +34,30 @@ function Login() {
       />
 
       <form className="login_form">
-        <input type="text" placeholder="Full Name (required if registering)" />
-        <input type="text" placeholder="Profile Pic Url (Optional)" />
-        <input type="text" placeholder="Email" />
-        <input type="password" placeholder="Password" />
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="Full Name (required if registering)"
+        />
+        <input
+          type="text"
+          value={profilePic}
+          onChange={(e) => setProfilePic(e.target.value)}
+          placeholder="Profile Pic Url (Optional)"
+        />
+        <input
+          type="text"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+        />
         <button type="submit" onClick={loginToApp}>
           Sign In
         </button>
