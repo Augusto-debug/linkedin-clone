@@ -77,7 +77,7 @@ function Feed() {
           description={description}
           message={message}
           photoUrl={photoUrl}
-        />
+        /> 
       ))}
     </div>
   );

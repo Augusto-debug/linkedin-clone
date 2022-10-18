@@ -32,7 +32,6 @@ function Login() {
         src="https://news.hitb.org/sites/default/files/styles/large/public/field/image/500px-LinkedIn_Logo.svg__1.png?itok=q_LR0Vks"
         alt="linkedin"
       />
-
       <form className="login_form">
         <input
           type="text"
